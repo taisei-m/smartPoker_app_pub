@@ -1,21 +1,53 @@
-# vop
+# Vue OnsenUI Practice
 
-> kawase's lecture (Vue.js OnsenUI Cordova)
+Cordova使ってアプリ作るぞ！（かわせ
 
-## Build Setup
+## とりあえず動かす
 
 ``` bash
-# install dependencies
+# 環境の用意
 npm install
 
-# serve with hot reload at localhost:8080
+# ホットリロード(更新即反映)を用いた再現(localhost:8000)
 npm run dev
 
-# build for production with minification
+# ソースコードwebpackにてまとめる
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 上で実行しているコードの解説
+``` bash
+npm install
+```
+これを実行することで現在いるフォルダ内にあるpackage.jsonの中身の環境を再現する<br>
+何かピンポイントでインストールしたい場合は<br>
+``` bash
+npm install 入れたいパッケージ名
+```
+で可能
+<br>
+``` bash
+npm run dev
+```
+これの実行によって[ローカルホスト](http:localhost:8000)にて現在のコードが再現される<br>
+この状態はソースコードを保存すると即時反映される<br>
+<br>
+``` bash
+npm run build
+```
+実行後、srcフォルダ内部のソースが全てまとめられ、wwwに配置される<br>
+cordovaはwww内の情報をアプリ化するため、これを事前実行することが必須
+<br><br>
+## 補足情報(重要ワード)
+### - cordova
+HTML,CSS,JSをアプリ化してくれるフレームワーク Node.jsのパッケージ
+
+### - Node.js
+ブラウザではなく、サーバサイドで動かせるJSのフレームワーク
+
+### - npm
+Node Package Managerの略 CUI上等でNodeのパッケージを弄る際に使う
+
+### - webpack
+ソースコードをひとまとめにしてくれる便利な奴<br>
+今回は.vue .js .cssなどをまとめてくれる

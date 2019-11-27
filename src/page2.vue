@@ -36,7 +36,8 @@
             <table border="2">
             <tr><th>role</th><th>Player</th><th>Chip</th><th>Bet</th></tr>
             <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{active: item.name==turn,isfold: item.isplay==1}">
-              <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="['emphasize'+i]">{{ item.bet }}</td>
+              <!-- <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="['emphasize'+i]">{{ item.bet }}</td> -->
+              <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="{'animated flash slow': flash[i]}">{{ item.bet }}</td>
             </tr>
             </table>
           </div>
@@ -116,14 +117,10 @@ export default {
       w: 0,
       win: 9,
       wc: 0,
-      bet0:players[0].bet,
-      bet1:players[1].bet,
-      bet2:players[2].bet,
-      bet3:players[3].bet,
-      emphasize0,
-      emphasize1,
-      emphasize2,
-      emphasize3
+
+
+
+      flash:[true,true,false,false,false,false],
     };
   },
   watch: {
@@ -180,20 +177,28 @@ export default {
     console.log("ディーラー:" + this.dealer);
     this.playing = this.players.length;
     this.sbbb();
+
+    ////数字強調
+    this.bet0 = players[0].bet;
+    this.bet1 = players[1].bet;
+    this.bet2 = players[2].bet;
+    this.bet3 = players[3].bet;
   },
   computed: {
     bet0:function(){
-      this.emphasize0 = "animated flash slow";
+      flash[0].push(true);
     },
     bet1:function(){
-      this.emphasize1 = "animated flash slow";
+      flash[1].push(true);
     },
     bet2:function(){
-      this.emphasize2 = "animated flash slow";
+      flash[2].push(true);
     },
     bet3:function(){
-      this.emphasize3 = "animated flash slow";
-    }
+      flash[3].push(true);
+    },
+
+
 
   },
   methods: {

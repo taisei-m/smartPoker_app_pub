@@ -122,8 +122,7 @@ export default {
       bet3:players[3].bet,
       emphasize0,
       emphasize1,
-      emphasize2,
-      emphasize3,
+      emphasize2
     };
   },
   watch: {

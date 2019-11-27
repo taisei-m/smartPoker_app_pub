@@ -115,14 +115,7 @@ export default {
       timer: null,
       w: 0,
       win: 9,
-      wc: 0,
-      bet0:players[0].bet,
-      bet1:players[1].bet,
-      bet2:players[2].bet,
-      bet3:players[3].bet,
-      emphasize0,
-      emphasize1,
-      emphasize2
+      wc: 0
     };
   },
   watch: {

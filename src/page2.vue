@@ -123,7 +123,7 @@ export default {
       emphasize0,
       emphasize1,
       emphasize2,
-      emphasize3,
+      emphasize3
     };
   },
   watch: {

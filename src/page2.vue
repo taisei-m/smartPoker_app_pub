@@ -5,30 +5,8 @@
 <!-- master kkk-->
 <!-- gjsdkfjsdfjsfjklfjsdf;fjsdl -->
     <v-ons-card>
-      <h1 >Smart Poker</h1>
-      <transition class="animated heartBeat delay-2s">
-      </transition>
-      <h1 class="animated flash slow">Example2</h1>
-      <h1 class="animated pulse slow">Example2</h1>
-      <div class="flex_box">
-        <div class="text_content">
-          <table border="2">
-           <tr>
-            <th v-bind:class="{preflop: br==0}">プリフロップ</th>
-            <th v-bind:class="{flop: br==1}">フロップ</th>
-            <th v-bind:class="{turnCL: br==2}">ターン</th>
-            <th v-bind:class="{river: br==3}">リバー</th>
-           </tr>
-          </table>
-          <div><h1>ラウンド：{{round}}/{{maxRound}}<br /></h1>
-            <h2>{{bettingRound[br]}}</h2><br />
-            <h1>{{winComment}}</h1>
-            <h3>ディーラーは{{dealer}}です。</h3>
-            <h3>{{turn}}の番です。</h3><br/>
-            <h1><img src="./images/tips_original.jpg" width="40px" height="30px" class="pod">ポット:{{pot}}</h1>
-            <h2><img src="./images/tip_original.jpg" width="40px" height="30px" class="bet">ベット:{{pay}}</h2>
-          </div>
-        </div>
+        <h1 class="animated pulse slow" style="text-align: center; padding-top: 20px">Smart Poker　　ラウンド：{{round}}/{{maxRound}}</h1>
+      <div class="flex_box1">
         <div>
           <br />
           <br />
@@ -42,6 +20,41 @@
             </table>
           </div>
         </div>
+
+        <div class="flex_box2">
+
+
+        <div class="text_content">
+            <table border="2" style="width: 700px"  >
+           <tr>
+            <th v-bind:class="{preflop: br==0}">プリフロップ</th>
+            <th v-bind:class="{flop: br==1}">フロップ</th>
+            <th v-bind:class="{turnCL: br==2}">ターン</th>
+            <th v-bind:class="{river: br==3}">リバー</th>
+           </tr>
+          </table>
+        </div>
+        <div class="imgtable-content">
+          <img src="./images/tableimage700.jpg">
+          <div class="table-text-center">
+            <h1><img src="./images/tips_original.jpg" width="40px" height="30px" class="pod">ポット:{{pot}}</h1>
+            <h2><img src="./images/tip_original.jpg" width="40px" height="30px" class="bet">ベット:{{pay}}</h2>
+          </div>
+          <!-- <div class="table-text-player"> -->
+            <!-- <div v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{isfold: item.isplay==1}" align="center"> -->
+            <!-- </div> -->
+            <div v-for="(item,i) of players" v-bind:key="item.name">
+              <!-- <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="['emphasize'+i]">{{ item.bet }}</td> -->
+              <!-- <div v-bind:class="['table-player'+i]"> -->
+              <div v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
+                <div v-if="players[i].name === turn" style="backgroundColor:yellow">☆Your Turn☆</div>
+                PLAYER{{i+1}}<br>{{ item.name }}<br>Chip：{{ item.chip }}
+              </div>
+            </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
       </div>
 
       <br />
@@ -118,9 +131,11 @@ export default {
       win: 9,
       wc: 0,
 
-
-
-      flash:[true,true,false,false,false,false],
+      flash: [true, true, true, false, false, false],
+      tableplayer:[],
+      tableLightup:{
+      backgroundColor: "red",
+      }
     };
   },
   watch: {
@@ -178,28 +193,94 @@ export default {
     this.playing = this.players.length;
     this.sbbb();
 
+
+
+
+    ///テーブル配置
+switch( this.players.length ) {
+    case 1:
+        this.tableplayer[0] = "table-player8";
+        break;
+    case 2:
+        this.tableplayer[0] = "table-player8";
+        this.tableplayer[1] = "table-player9";
+        break;
+    case 3:
+        this.tableplayer[0] = "table-player8";
+        this.tableplayer[1] = "table-player4";
+        this.tableplayer[2] = "table-player6";
+        break;
+    case 4:
+        this.tableplayer[0] = "table-player2";
+        this.tableplayer[1] = "table-player0";
+        this.tableplayer[2] = "table-player1";
+        this.tableplayer[3] = "table-player3";
+        break;
+    case 5:
+        this.tableplayer[0] = "table-player8";
+        this.tableplayer[1] = "table-player7";
+        this.tableplayer[2] = "table-player4";
+        this.tableplayer[3] = "table-player6";
+        this.tableplayer[4] = "table-player5";
+        break;
+    case 6:
+        this.tableplayer[0] = "table-player8";
+        this.tableplayer[1] = "table-player7";
+        this.tableplayer[2] = "table-player4";
+        this.tableplayer[3] = "table-player9";
+        this.tableplayer[4] = "table-player6";
+        this.tableplayer[5] = "table-player5";
+        break;
+    case 7:
+        this.tableplayer[0] = "table-player8";
+        this.tableplayer[1] = "table-player7";
+        this.tableplayer[2] = "table-player4";
+        this.tableplayer[3] = "table-player0";
+        this.tableplayer[4] = "table-player1";
+        this.tableplayer[5] = "table-player6";
+        this.tableplayer[6] = "table-player5";
+        break;
+    case 8:
+        this.tableplayer[0] = "table-player2";
+        this.tableplayer[1] = "table-player7";
+        this.tableplayer[2] = "table-player4";
+        this.tableplayer[3] = "table-player0";
+        this.tableplayer[4] = "table-player1";
+        this.tableplayer[5] = "table-player6";
+        this.tableplayer[6] = "table-player5";
+        this.tableplayer[7] = "table-player3";
+        break;
+
+    default:
+        break;
+}
+
+
+
+
     ////数字強調
     this.bet0 = players[0].bet;
     this.bet1 = players[1].bet;
     this.bet2 = players[2].bet;
     this.bet3 = players[3].bet;
+
+
+
+
   },
   computed: {
-    bet0:function(){
+    bet0: function() {
       flash[0].push(true);
     },
-    bet1:function(){
+    bet1: function() {
       flash[1].push(true);
     },
-    bet2:function(){
+    bet2: function() {
       flash[2].push(true);
     },
-    bet3:function(){
+    bet3: function() {
       flash[3].push(true);
-    },
-
-
-
+    }
   },
   methods: {
     submit: function() {
@@ -849,8 +930,6 @@ export default {
       await setTimeout(function() {
         that.$modal.hide("action-modal");
       }, 2000);
-
-
     },
     showErr() {
       let that = this;
@@ -865,6 +944,7 @@ export default {
 
 
 <style scoped>
+/* 奥瀬が教えてくれたんご */
 @import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css);
 .gradation {
   margin-top: -60px;
@@ -895,13 +975,15 @@ export default {
 .bet {
   vertical-align: middle;
 }
-.flex_box {
+.flex_box1 {
   display: flex;
+  justify-content: space-around;
 }
 
 .text_content {
-  /* margin-left:10px; */
-  padding-left: 5%;
+  width:auto;
+  padding: 0%;
+
 }
 .table_content {
   /* margin-right: 10px; */
@@ -927,22 +1009,107 @@ table td {
   padding: 15px 0;
 }
 .active {
-  background-color: #d4f0fd;
+  background-color: red;
 }
 .isfold {
-  background-color: lightgray;
+  background-color: blueviolet;
 }
 
 .preflop {
-  background-color: lightgray;
+  background-color: rgb(223, 134, 226);
 }
 .flop {
-  background-color: lightgray;
+  background-color: rgb(223, 134, 226);
 }
 .turnCL {
-  background-color: lightgray;
+  background-color: rgb(223, 134, 226);
 }
 .river {
-  background-color: lightgray;
+  background-color: rgb(223, 134, 226);
 }
+
+/* テーブル画像について */
+.flex_box2 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 36px;
+}
+.imgtable-content {
+  position: relative;
+}
+.table-text-center{
+  position: absolute;
+  top: 32%;
+  left: 38%;
+  padding: 10px;
+  background-color: #d4f0fd
+}
+.table-text-player{
+  background-color: #d4f0fd
+}
+.table-player0{
+  position: absolute;
+  top: 76%;
+  left: 27%;
+  background-color: #d4f0fd
+}
+.table-player1{
+  position: absolute;
+  top: 76%;
+  left: 58%;
+  background-color: #d4f0fd
+}
+.table-player2{
+  position: absolute;
+  top: 3%;
+  left: 27%;
+  background-color: #d4f0fd
+}
+.table-player3{
+  position: absolute;
+  top: 3%;
+  left: 58%;
+  background-color: #d4f0fd
+}
+.table-player4{
+  position: absolute;
+  top: 60%;
+  left: 7%;
+  background-color: #d4f0fd
+}
+.table-player5{
+  position: absolute;
+  top: 22%;
+  left: 82%;
+  background-color: #d4f0fd
+}
+.table-player6{
+  position: absolute;
+  top: 60%;
+  left: 82%;
+  background-color: #d4f0fd
+}
+.table-player7{
+  position: absolute;
+  top: 22%;
+  left: 7%;
+  background-color: #d4f0fd
+}
+.table-player8{
+  position: absolute;
+  top: 3%;
+  left:43%;
+  background-color: #d4f0fd
+}
+.table-player9{
+  position: absolute;
+  top: 76%;
+  left:43%;
+  background-color: #d4f0fd
+}
+
+
+
+
+
 </style>

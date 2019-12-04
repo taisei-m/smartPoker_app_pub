@@ -1,6 +1,7 @@
 <template>
   <v-ons-page>
-    <v-ons-button>これはたいせい！</v-ons-button>
+    
+    <v-ons-button>これはたいせいなのか！</v-ons-button>
   </v-ons-page>
 </template>
 

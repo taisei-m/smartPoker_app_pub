@@ -1,5 +1,5 @@
 <template>
-  <v-ons-navigator
+<v-ons-navigator
     swipeable
     swipe-target-width="5%"
     id="navigator"
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import top from "./top.vue";
+import top from "./page1.vue";
 
 export default {
   beforeCreate() {

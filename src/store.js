@@ -10,6 +10,11 @@ export default new Vuex.Store({
       namespaced: true,
       state: {
         stack: [],
+        player: [],
+        maxRound: "",
+        chip:"",
+        minBet: "",
+        ranking: [],
       },
       mutations: {
         push(state, page) {

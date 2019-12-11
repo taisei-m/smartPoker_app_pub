@@ -1,5 +1,5 @@
-//key = "your_api_key"
+//APIキー
 key = "4935adfhaf8024852045";
 
-// token = "your_token"
+//アクセストークン
 token = "a;sdhgfagpoghf89apefhpa9we";

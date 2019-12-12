@@ -5,4 +5,4 @@ key = "4935adfhaf8024852045";
 token = "a;sdhgfagpoghf89apefhpa9we";
 
 
-//test1 pull taisei delete kome
+//test1 pull taisei delete kome -f

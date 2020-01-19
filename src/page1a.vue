@@ -6,10 +6,7 @@
       <v-ons-card style="margin-top:-20px">
         <div class="flex_box2">
           <div class="imgtable-content">
-            <img src="./images/pokertable2.png">
-            <div class="table-text-center">
-
-            </div>
+            <img class="i" src="./images/pokertable2.png">
           <div v-for="(item,i) of players" v-bind:key="item.name">
             <div style="background-color: rgba(0,0,0,0.8);color:white;padding:8px" v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
                 PLAYER{{i+1}}<br><b>{{ item.name }}</b>
@@ -186,6 +183,14 @@ export default {
 
 }
 
+ i{
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
 .text_content{
   /* margin-left:10px; */
  padding-left:5%;
@@ -217,7 +222,9 @@ table td {
 /* テーブル画像について */
 .flex_box2 {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: center;
+
   padding-top: 36px;
 }
 .imgtable-content {

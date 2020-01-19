@@ -11,6 +11,7 @@ export default new Vuex.Store({
       state: {
         stack: [],
         player: [],
+        players: [],
         maxRound: "",
         chip:"",
         minBet: "",
@@ -29,4 +30,3 @@ export default new Vuex.Store({
     }
   }
 })
-

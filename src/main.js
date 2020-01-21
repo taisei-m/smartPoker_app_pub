@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
-import 'animate.min.css'
 
 import Vue from 'vue'
 import VueOnsen from 'vue-onsenui'

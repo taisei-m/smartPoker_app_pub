@@ -1,93 +1,105 @@
 <template>
   <v-ons-page>
     <div class="gradation">
-    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#eeeeee"><path d="M143.19336,21.43001c-0.26705,0.00844 -0.53341,0.03181 -0.79785,0.06999h-34.89551c-2.58456,-0.03655 -4.98858,1.32136 -6.29153,3.55376c-1.30295,2.2324 -1.30295,4.99342 0,7.22582c1.30295,2.2324 3.70697,3.59031 6.29153,3.55376h18.53256l-66.59961,66.59961c-1.8722,1.79752 -2.62637,4.46674 -1.97164,6.97823c0.65473,2.51149 2.61604,4.4728 5.12753,5.12753c2.51149,0.65473 5.18071,-0.09944 6.97823,-1.97165l66.59961,-66.59961v18.53255c-0.03655,2.58456 1.32136,4.98858 3.55376,6.29153c2.2324,1.30295 4.99342,1.30295 7.22582,0c2.2324,-1.30295 3.59031,-3.70697 3.55376,-6.29153v-34.9235c0.28889,-2.08845 -0.35639,-4.19816 -1.76411,-5.76769c-1.40772,-1.56953 -3.43507,-2.43964 -5.54253,-2.3788zM35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-43c0.03655,-2.58456 -1.32136,-4.98858 -3.55376,-6.29153c-2.2324,-1.30295 -4.99342,-1.30295 -7.22582,0c-2.2324,1.30295 -3.59031,3.70697 -3.55376,6.29153v43h-100.33333v-100.33333h43c2.58456,0.03655 4.98858,-1.32136 6.29153,-3.55376c1.30295,-2.2324 1.30295,-4.99342 0,-7.22582c-1.30295,-2.2324 -3.70697,-3.59031 -6.29153,-3.55376z"></path></g></g>
-<!-- master kkk-->
-<!-- gjsdkfjsdfjsfjklfjsdf;fjsdl -->
-    <v-ons-card>
-        <h1 class="animated pulse slow" style="text-align: center; padding-top: 20px">Smart Poker　　ラウンド：{{round}}/{{maxRound}}</h1>
-      <div class="flex_box1">
-        <div>
-          <br />
-          <br />
-          <div class="table_content">
-            <table border="2">
-            <tr><th>role</th><th>Player</th><th>Chip</th><th>Bet</th></tr>
-            <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{active: item.name==turn,isfold: item.isplay==1}">
-              <!-- <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="['emphasize'+i]">{{ item.bet }}</td> -->
-              <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="{'animated flash slow': flash[i]}">{{ item.bet }}</td>
-            </tr>
-            </table>
+      <h1 align="center" style="color:white;margin-top:-20px">SmartPoker</h1>
+      <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#eeeeee"><path d="M143.19336,21.43001c-0.26705,0.00844 -0.53341,0.03181 -0.79785,0.06999h-34.89551c-2.58456,-0.03655 -4.98858,1.32136 -6.29153,3.55376c-1.30295,2.2324 -1.30295,4.99342 0,7.22582c1.30295,2.2324 3.70697,3.59031 6.29153,3.55376h18.53256l-66.59961,66.59961c-1.8722,1.79752 -2.62637,4.46674 -1.97164,6.97823c0.65473,2.51149 2.61604,4.4728 5.12753,5.12753c2.51149,0.65473 5.18071,-0.09944 6.97823,-1.97165l66.59961,-66.59961v18.53255c-0.03655,2.58456 1.32136,4.98858 3.55376,6.29153c2.2324,1.30295 4.99342,1.30295 7.22582,0c2.2324,-1.30295 3.59031,-3.70697 3.55376,-6.29153v-34.9235c0.28889,-2.08845 -0.35639,-4.19816 -1.76411,-5.76769c-1.40772,-1.56953 -3.43507,-2.43964 -5.54253,-2.3788zM35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-43c0.03655,-2.58456 -1.32136,-4.98858 -3.55376,-6.29153c-2.2324,-1.30295 -4.99342,-1.30295 -7.22582,0c-2.2324,1.30295 -3.59031,3.70697 -3.55376,6.29153v43h-100.33333v-100.33333h43c2.58456,0.03655 4.98858,-1.32136 6.29153,-3.55376c1.30295,-2.2324 1.30295,-4.99342 0,-7.22582c-1.30295,-2.2324 -3.70697,-3.59031 -6.29153,-3.55376z"></path></g></g>
+      <v-ons-card style="margin-top:-20px">
+        <h1 align="center" >ROUND : <b>{{round}}</b><span style="color:gray">/{{maxRound}}　</span></h1>
+        <table border="2" align="center" style="margin-right:270px;margin-bottom:50px">
+          <tr ><th :class="{bettingRound:br ==0,notbr:br !=0}">{{bettingRound[0]}}</th><th :class="{bettingRound:br ==1,notbr:br !=1}">{{bettingRound[1]}}</th>
+          <th :class="{bettingRound:br ==2,notbr:br !=2}">{{bettingRound[2]}}</th><th :class="{bettingRound:br ==3,notbr:br !=3}">{{bettingRound[3]}}</th></tr>
+        </table>
+        <div class="flex_box">
+          <div>
+          <div>
+            <div class="table_content" :class="{player6: player.length==6,player7: player.length==7,player8: player.length==8}">
+              <table border="2">
+              <tr>　　<th>Role</th><th>　Bet　</th><th>　Player　</th><th>　Chip　</th></tr>
+              <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{active: item.name==turn,isfold: item.isplay==1}">
+                <td><span v-show="dealer == item.name">ディーラー</span>
+                    <span v-show="sb == item.name">SB</span>
+                    <span v-show="bb == item.name">BB</span></td>
+                <td v-bind:class="{'animated flash slow': flash[i]}">{{ item.bet }}</td><td>PLAYER{{i+1}}<br><b>{{ item.name }}</b></td><td>{{ item.chip }}</td>
+              </tr>
+              </table>
+            </div>
           </div>
         </div>
-
         <div class="flex_box2">
-
-
-        <div class="text_content">
-            <table border="2" style="width: 700px"  >
-           <tr>
-            <th v-bind:class="{preflop: br==0}">プリフロップ</th>
-            <th v-bind:class="{flop: br==1}">フロップ</th>
-            <th v-bind:class="{turnCL: br==2}">ターン</th>
-            <th v-bind:class="{river: br==3}">リバー</th>
-           </tr>
-          </table>
-        </div>
-        <div class="imgtable-content">
-          <img src="./images/tableimage700.jpg">
-          <div class="table-text-center">
-            <h1><img src="./images/tips_original.jpg" width="40px" height="30px" class="pod">ポット:{{pot}}</h1>
-            <h2><img src="./images/tip_original.jpg" width="40px" height="30px" class="bet">ベット:{{pay}}</h2>
-          </div>
-          <!-- <div class="table-text-player"> -->
-            <!-- <div v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{isfold: item.isplay==1}" align="center"> -->
-            <!-- </div> -->
+          <div class="imgtable-content"  style="margin-top:-50px;margin-left:100px">
+            <img src="./images/pokertable2.png">
+            <div class="table-text-center">
+              <h1><img src="./images/1575385499810.png" width="40px" height="30px" class="pod"> POT : {{pot}}</h1>
+              <h1><img src="./images/1575385254734.png" width="40px" height="30px" class="bet"> BET : {{bet}}</h1>
+            </div>
             <div v-for="(item,i) of players" v-bind:key="item.name">
-              <!-- <td></td><td>PLAYER{{i+1}}<br>{{ item.name }}</td><td>{{ item.chip }}</td><td v-bind:class="['emphasize'+i]">{{ item.bet }}</td> -->
-              <!-- <div v-bind:class="['table-player'+i]"> -->
-              <div v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
-                <div v-if="players[i].name === turn" style="backgroundColor:yellow">☆Your Turn☆</div>
-                PLAYER{{i+1}}<br>{{ item.name }}<br>Chip：{{ item.chip }}
+              <div style="background-color: rgba(0,0,0,0.7);color:white;padding:8px" v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
+                <div v-if="players[i].name === turn" style="background-color: rgba(0,0,0,0.6);color:white">☆Your Turn☆</div>
+                <span :class="{turn:players[i].name === turn}">PLAYER{{i+1}}<br><b>{{ item.name }}</b><br>Chip：{{ item.chip }}</span>
               </div>
             </div>
+          </div>
+        </div>
+        </div>
 
-          <!-- </div> -->
-        </div>
-      </div>
-      </div>
+        <modal name="sbbb-modal" width="50%"  height="40%" >
+          <div align="center" style="line-height:100px;">
+            <h1><b>Round {{round}}</b></h1>
+            <h1 style="margin-top:-40px">ディーラーは<b>{{dealer}}</b>さんです</h1>
+              <h1 style="margin-top:-40px">各プレイヤーにカードを2枚配ってください</h1>
+          </div>
+        </modal>
+        <modal name="sbbb-modal2" width="50%"  height="40%" >
+          <div align="center" style="line-height:100px;">
+              <h1 style="margin-top: 40px"><b>{{sb}}</b>さんは<b> {{halfMinBet}} </b>ベットしてください<br>
+              <b>{{bb}}</b>さんは<b> {{minBet}} </b>ベットしてください</h1>
+          </div>
+        </modal>
+        <modal name="action-modal" width="50%"  height="40%" >
+          <div align="center" style="line-height:100px;">
+            <h1>{{name}}</h1>
+            <h1 style="margin-top: -50px"><span class="animated infinite fadeIn fast "><b>{{action}}</b></span>  <span v-show="action!='チェック' && action !='フォールド'">: {{pay}}</span><br>
+            Chip:{{beforeChip}}　<span v-show="action!='チェック' && action !='フォールド'">→　{{afterChip}}</span></h1>
 
-      <br />
-      <modal name="winner-modal" width="60%"  height="80%">
-        <div align="center">
-          <h2>ショーダウン</h2>
-          ラウンド{{round}}終了です。
-          勝利プレイヤーを「プレイヤー'番号'」で言ってください。
-          <table border="2">
-            <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{isfold: item.isplay==1}" align="center">
-              <td>PLAYER{{i+1}}</td><td>{{ item.name }}</td>
-            </tr>
-            </table>
-        </div>
-      </modal>
+          </div>
+        </modal>
+        <modal name="err-modal" width="50%"  height="20%">
+          <div align="center" style="line-height:100px; color:red;">
+            <h1>{{comment}}</h1>
+          </div>
+        </modal>
+        <modal name="br-modal" width="50%"  height="40%">
+          <div align="center" style="line-height:100px;">
+            <h1><b>{{brWord}}</b></h1>
+            <h1>{{brComment}}</h1>
+          </div>
+        </modal>
 
-      <modal name="action-modal" width="50%"  height="20%">
-        <div align="center" style="line-height:100px;">
-          <h1>{{action}}</h1>
-        </div>
-      </modal>
-      <modal name="err-modal" width="50%"  height="20%">
-        <div align="center" style="line-height:100px; color:red;">
-          <h1>{{comment}}</h1>
-        </div>
-      </modal>
-    </v-ons-card>
+        <modal name="winner-modal" width="60%"  height="80%">
+          <div align="center">
+            <h2>ショーダウン</h2>
+            ラウンド{{round}}終了です。
+            勝利プレイヤーを<b>「プレイヤー'番号'」</b>で言ってください。
+            <table border="2">
+              <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{isfold: item.isplay==1}" align="center">
+                <td>PLAYER{{i+1}}</td><td><b>{{ item.name }}</b></td>
+              </tr>
+              </table>
+          </div>
+        </modal>
+        <modal name="win-modal" width="50%"  height="20%">
+          <div align="center" style="line-height:100px; color:red;">
+            <h1>{{winComment}}</h1>
+          </div>
+        </modal>
+      </v-ons-card>
     </div>
   </v-ons-page>
 </template>
 
 <script>
 import page1 from "./page1.vue";
+import page1a from './page1a.vue'
 import page3 from "./page3.vue";
 
 export default {
@@ -97,13 +109,13 @@ export default {
       maxRound: this.$store.state.maxRound,
       chip: this.$store.state.chip,
       minBet: this.$store.state.minBet,
-      array: [],
+      halfMinBet: 0,
       round: 1,
       dealer: "",
       pot: 0,
       bettingRound: ["プリフロップ", "フロップ", "ターン", "リバー"],
-      br: 3,
-      players: [],
+      br: 0,
+      players: this.$store.state.players,
       allBet: 0,
       order: "",
       turn: "",
@@ -120,21 +132,28 @@ export default {
       },
       selectWinnerValue: "",
       update: null,
-      pay: 10,
+      pay: this.$store.state.minBet,
       playing: 0,
       comment: "",
       winComment: "",
+      brComment: "",
+      brWord: "",
       checkCount: 0,
       record: [],
       timer: null,
       w: 0,
       win: 9,
       wc: 0,
-
-      flash: [true, true, true, false, false, false],
+      sb:"",
+      bb:"",
+      bet: this.$store.state.minBet,
+      beforeChip:0,
+      afterChip: 0,
+      name:"",
+      flash:[],
       tableplayer:[],
       tableLightup:{
-      backgroundColor: "red",
+      backgroundColor: "#d4f0fd",
       }
     };
   },
@@ -158,7 +177,7 @@ export default {
   },
   created() {
     //プレイヤー設定
-    for (let i = 0; i < this.player.length; i++) {
+    /*for (let i = 0; i < this.player.length; i++) {
       let addPlayer = {
         name: this.player[i],
         chip: this.chip,
@@ -166,6 +185,7 @@ export default {
         isplay: 0
       };
       this.players.push(addPlayer);
+      this.flash.push(false);
     }
     //席順
     for (let i = this.players.length - 1; i >= 0; i--) {
@@ -183,7 +203,7 @@ export default {
       if (q == this.players.length) {
         console.log(this.order + "の順です。");
       }
-    }
+    }*/
     console.log("ラウンド:" + this.round);
     //プリフロップ
     console.log(this.bettingRound[0]);
@@ -191,82 +211,67 @@ export default {
     this.dealer = this.players[0].name;
     console.log("ディーラー:" + this.dealer);
     this.playing = this.players.length;
+    this.halfMinBet = this.minBet/2;
     this.sbbb();
 
-
-
-
     ///テーブル配置
-switch( this.players.length ) {
-    case 1:
-        this.tableplayer[0] = "table-player8";
-        break;
-    case 2:
-        this.tableplayer[0] = "table-player8";
-        this.tableplayer[1] = "table-player9";
-        break;
-    case 3:
-        this.tableplayer[0] = "table-player8";
-        this.tableplayer[1] = "table-player4";
-        this.tableplayer[2] = "table-player6";
-        break;
-    case 4:
-        this.tableplayer[0] = "table-player2";
-        this.tableplayer[1] = "table-player0";
-        this.tableplayer[2] = "table-player1";
-        this.tableplayer[3] = "table-player3";
-        break;
-    case 5:
-        this.tableplayer[0] = "table-player8";
-        this.tableplayer[1] = "table-player7";
-        this.tableplayer[2] = "table-player4";
-        this.tableplayer[3] = "table-player6";
-        this.tableplayer[4] = "table-player5";
-        break;
-    case 6:
-        this.tableplayer[0] = "table-player8";
-        this.tableplayer[1] = "table-player7";
-        this.tableplayer[2] = "table-player4";
-        this.tableplayer[3] = "table-player9";
-        this.tableplayer[4] = "table-player6";
-        this.tableplayer[5] = "table-player5";
-        break;
-    case 7:
-        this.tableplayer[0] = "table-player8";
-        this.tableplayer[1] = "table-player7";
-        this.tableplayer[2] = "table-player4";
-        this.tableplayer[3] = "table-player0";
-        this.tableplayer[4] = "table-player1";
-        this.tableplayer[5] = "table-player6";
-        this.tableplayer[6] = "table-player5";
-        break;
-    case 8:
-        this.tableplayer[0] = "table-player2";
-        this.tableplayer[1] = "table-player7";
-        this.tableplayer[2] = "table-player4";
-        this.tableplayer[3] = "table-player0";
-        this.tableplayer[4] = "table-player1";
-        this.tableplayer[5] = "table-player6";
-        this.tableplayer[6] = "table-player5";
-        this.tableplayer[7] = "table-player3";
-        break;
+    switch( this.players.length ) {
+      case 1:
+          this.tableplayer[0] = "table-player8";
+          break;
+      case 2:
+          this.tableplayer[0] = "table-player8";
+          this.tableplayer[1] = "table-player9";
+          break;
+      case 3:
+          this.tableplayer[0] = "table-player8";
+          this.tableplayer[1] = "table-player6";
+          this.tableplayer[2] = "table-player4";
+          break;
+      case 4:
+          this.tableplayer[0] = "table-player2";
+          this.tableplayer[1] = "table-player3";
+          this.tableplayer[2] = "table-player1";
+          this.tableplayer[3] = "table-player0";
+          break;
+      case 5:
+          this.tableplayer[0] = "table-player8";
+          this.tableplayer[1] = "table-player5";
+          this.tableplayer[2] = "table-player6";
+          this.tableplayer[3] = "table-player4";
+          this.tableplayer[4] = "table-player7";
+          break;
+      case 6:
+          this.tableplayer[0] = "table-player8";
+          this.tableplayer[1] = "table-player5";
+          this.tableplayer[2] = "table-player6";
+          this.tableplayer[3] = "table-player9";
+          this.tableplayer[4] = "table-player4";
+          this.tableplayer[5] = "table-player7";
+          break;
+      case 7:
+          this.tableplayer[0] = "table-player8";
+          this.tableplayer[1] = "table-player5";
+          this.tableplayer[2] = "table-player6";
+          this.tableplayer[3] = "table-player1";
+          this.tableplayer[4] = "table-player0";
+          this.tableplayer[5] = "table-player4";
+          this.tableplayer[6] = "table-player7";
+          break;
+      case 8:
+          this.tableplayer[0] = "table-player3";
+          this.tableplayer[1] = "table-player5";
+          this.tableplayer[2] = "table-player6";
+          this.tableplayer[3] = "table-player1";
+          this.tableplayer[4] = "table-player0";
+          this.tableplayer[5] = "table-player4";
+          this.tableplayer[6] = "table-player7";
+          this.tableplayer[7] = "table-player2";
+          break;
 
-    default:
-        break;
-}
-
-
-
-
-    ////数字強調
-    this.bet0 = players[0].bet;
-    this.bet1 = players[1].bet;
-    this.bet2 = players[2].bet;
-    this.bet3 = players[3].bet;
-
-
-
-
+      default:
+      break;
+    }
   },
   computed: {
     bet0: function() {
@@ -288,13 +293,10 @@ switch( this.players.length ) {
       //this.action = this.selectActionValue;//commentin
       //console.log(this.selectActionValue);//commentin
       console.log(this.action);
-      this.winComment = "";
+      this.name =this.players[this.p % this.players.length].name;
+      this.beforeChip =this.players[this.p % this.players.length].chip;
       //this.action = this.selectActionOptions[this.selectActionValue];
-      if (
-        this.pay <=
-        this.players[this.p % this.players.length].chip +
-          this.players[this.p % this.players.length].bet
-      ) {
+      if (this.pay <= this.players[this.p % this.players.length].chip + this.players[this.p % this.players.length].bet) {
         if (this.pay >= this.minBet) {
           //アクション
           switch (this.action) {
@@ -370,14 +372,11 @@ switch( this.players.length ) {
         this.checkCount = 0;
         this.players[this.p % this.players.length].bet = this.pay;
         this.players[this.p % this.players.length].chip =
-          this.players[this.p % this.players.length].chip -
-          this.players[this.p % this.players.length].bet;
-        console.log(
-          "ベット額:" + this.players[this.p % this.players.length].bet
-        );
-        console.log(
-          "チップ:" + this.players[this.p % this.players.length].chip
-        );
+          this.players[this.p % this.players.length].chip - this.players[this.p % this.players.length].bet;
+        this.bet = this.players[this.p % this.players.length].bet;
+        this.afterChip = this.players[this.p % this.players.length].chip;
+        console.log("ベット額:" + this.players[this.p % this.players.length].bet);
+        console.log("チップ:" + this.players[this.p % this.players.length].chip);
         this.nextTurn();
       } else {
         this.comment = "既にベットされています";
@@ -397,66 +396,34 @@ switch( this.players.length ) {
       ) {
         this.stopTimer();
         this.checkCount = 0;
-        if (
-          Math.max.apply(
-            null,
-            this.players.map(function(o) {
-              return o.isplay;
-            })
-          ) == 2
-        ) {
+        if (Math.max.apply(null,this.players.map(function(o) {return o.isplay;})) == 2) {
           this.players[this.p % this.players.length].isplay = 2;
           this.playing--;
         }
-        this.pay = Math.max.apply(
-          null,
-          this.players.map(function(o) {
-            return o.bet;
-          })
-        );
-        let pay2 =
-          Number(this.pay) - this.players[this.p % this.players.length].bet;
+        this.pay = Math.max.apply(null,this.players.map(function(o) {return o.bet;}));
+        let pay2 =Number(this.pay) - this.players[this.p % this.players.length].bet;
         this.players[this.p % this.players.length].bet = this.pay;
-        this.players[this.p % this.players.length].chip =
-          this.players[this.p % this.players.length].chip - pay2;
-        console.log(
-          "ベット額:" + this.players[this.p % this.players.length].bet
-        );
-        console.log(
-          "チップ:" + this.players[this.p % this.players.length].chip
-        );
+        this.players[this.p % this.players.length].chip = this.players[this.p % this.players.length].chip - pay2;
+        this.bet = this.players[this.p % this.players.length].bet;
+        this.afterChip = this.players[this.p % this.players.length].chip;
+        console.log("ベット額:" + this.players[this.p % this.players.length].bet);
+        console.log("チップ:" + this.players[this.p % this.players.length].chip);
         this.nextTurn();
       } else if (
-        Math.max.apply(
-          null,
-          this.players.map(function(o) {
-            return o.bet;
-          })
-        ) == 0
-      ) {
+        Math.max.apply(null,this.players.map(function(o) {return o.bet;})) == 0) {
         this.stopTimer();
         this.checkCount = 0;
-        if (
-          Math.max.apply(
-            null,
-            this.players.map(function(o) {
-              return o.isplay;
-            })
-          ) == 2
-        ) {
+        if (Math.max.apply(null,this.players.map(function(o) {return o.isplay;})) == 2) {
           this.players[this.p % this.players.length].isplay = 2;
           this.playing--;
         }
         this.players[this.p % this.players.length].bet = this.pay;
         this.players[this.p % this.players.length].chip =
-          this.players[this.p % this.players.length].chip -
-          this.players[this.p % this.players.length].bet;
-        console.log(
-          "ベット額:" + this.players[this.p % this.players.length].bet
-        );
-        console.log(
-          "チップ:" + this.players[this.p % this.players.length].chip
-        );
+          this.players[this.p % this.players.length].chip - this.players[this.p % this.players.length].bet;
+        this.bet = this.players[this.p % this.players.length].bet;
+        this.afterChip = this.players[this.p % this.players.length].chip;
+        console.log("ベット額:" + this.players[this.p % this.players.length].bet);
+        console.log("チップ:" + this.players[this.p % this.players.length].chip);
         this.nextTurn();
       } else {
         this.comment = "コールできません";
@@ -465,48 +432,20 @@ switch( this.players.length ) {
     },
     raise() {
       console.log("レイズ");
-      if (
-        this.pay >=
-        Math.max.apply(
-          null,
-          this.players.map(function(o) {
-            return o.bet;
-          })
-        )
-      ) {
-        if (
-          Number(this.pay) +
-            Number(
-              Math.max.apply(
-                null,
-                this.players.map(function(o) {
-                  return o.bet;
-                })
-              )
-            ) <=
-          this.players[this.p % this.players.length].chip
-        ) {
+      if (this.pay >=Math.max.apply(null,this.players.map(function(o) {return o.bet;}))) {
+        if (Number(this.pay) + Number(Math.max.apply(null,this.players.map(function(o) {return o.bet;}))) <=
+            this.players[this.p % this.players.length].chip) {
           this.stopTimer();
           this.checkCount = 0;
-          this.pay =
-            Number(this.pay) +
-            Math.max.apply(
-              null,
-              this.players.map(function(o) {
-                return o.bet;
-              })
-            );
-          let pay2 =
-            Number(this.pay) - this.players[this.p % this.players.length].bet;
+          this.pay = Number(this.pay) + Math.max.apply(null,this.players.map(function(o) {return o.bet;}));
+          let pay2 = Number(this.pay) - this.players[this.p % this.players.length].bet;
           this.players[this.p % this.players.length].bet = this.pay;
           this.players[this.p % this.players.length].chip =
             this.players[this.p % this.players.length].chip - pay2;
-          console.log(
-            "ベット額:" + this.players[this.p % this.players.length].bet
-          );
-          console.log(
-            "チップ:" + this.players[this.p % this.players.length].chip
-          );
+          this.bet = this.players[this.p % this.players.length].bet;
+          this.afterChip = this.players[this.p % this.players.length].chip;
+          console.log("ベット額:" + this.players[this.p % this.players.length].bet);
+          console.log("チップ:" + this.players[this.p % this.players.length].chip);
           this.nextTurn();
         } else {
           this.comment = "チップが足りません";
@@ -582,6 +521,8 @@ switch( this.players.length ) {
         this.players[this.p % this.players.length].chip = 0;
         this.players[this.p % this.players.length].isplay = 2;
         this.playing--;
+        this.bet = this.players[this.p % this.players.length].bet;
+        this.afterChip = this.players[this.p % this.players.length].chip;
         console.log(
           "ベット額:" + this.players[this.p % this.players.length].bet
         );
@@ -600,6 +541,7 @@ switch( this.players.length ) {
         this.players[this.win].chip = this.players[this.win].chip + this.pot;
         this.winComment = this.players[this.win].name + "さんが勝ちました";
         this.$modal.hide("winner-modal");
+        this.showWin();
         this.wc = 0;
         this.nextRound();
       }
@@ -633,8 +575,20 @@ switch( this.players.length ) {
         ) == 0 ||
         (this.br == 0 &&
           this.p <
-            Number(this.players.length + this.round % this.players.length + 1))
+            Number(
+              this.players.length + (this.round % this.players.length) + 1
+            ))
       ) {
+        //pika
+        let that =this;
+        let pika =this.players[this.p % this.players.length];
+        that.flash[pika]=true;
+            console.log("pikapika"+that.flash[pika]);
+            setTimeout(function() {
+              that.flash[pika]= false;
+              console.log(that.flash[pika]);
+            }, 2000);
+
         console.log("eBet != this.playing ||");
         this.p++;
         //フォールドした人を飛ばす
@@ -666,6 +620,7 @@ switch( this.players.length ) {
             this.winComment =
               this.players[this.p % this.players.length].name +
               "さんが勝ちました";
+              this.showWin();
             this.nextRound();
           } else {
             this.stopTimer();
@@ -692,6 +647,7 @@ switch( this.players.length ) {
                 this.allBet = 0;
                 this.players[i].chip = this.players[i].chip + this.pot;
                 this.winComment = this.players[i].name + "さんが勝ちました";
+                this.showWin();
                 this.nextRound();
               }
             }
@@ -725,6 +681,7 @@ switch( this.players.length ) {
                 console.log("オールイン" + this.players[i].name);
                 this.players[i].chip = this.players[i].chip + this.pot;
                 this.winComment = this.players[i].name + "さんが勝ちました";
+                this.showWin();
                 this.nextRound();
               }
             }
@@ -757,10 +714,23 @@ switch( this.players.length ) {
             break;
           }
         }
-        this.stopTimer();
-        this.startTimer(); //commentout
+        this.bet =0;
         this.turn = this.players[this.p % this.players.length].name;
         console.log(this.turn + "の番");
+        if(this.br==1){
+          this.brWord ="フロップ";
+          this.brComment= "3枚カードをオープンしてください";
+        }else if(this.br==2){
+          this.brWord ="ターン";
+          this.brComment= "4枚目のカードをオープンしてください";
+        }else if(this.br==3){
+          this.brWord ="リバー";
+          this.brComment= "5枚目のカードをオープンしてください";
+        }
+        this.showBr()
+
+        this.stopTimer();
+        this.startTimer(); //commentout
       } else {
         if (this.action != "フォールド") {
           this.show();
@@ -814,6 +784,7 @@ switch( this.players.length ) {
       this.players[this.p % this.players.length].chip =
         this.players[this.p % this.players.length].chip -
         this.players[this.p % this.players.length].bet;
+      this.sb=this.players[this.p % this.players.length].name;
       console.log(this.players[this.p % this.players.length].name + "の番");
       console.log("ベット額:" + this.players[this.p % this.players.length].bet);
       console.log("チップ:" + this.players[this.p % this.players.length].chip);
@@ -826,6 +797,7 @@ switch( this.players.length ) {
       this.players[this.p % this.players.length].chip =
         this.players[this.p % this.players.length].chip -
         this.players[this.p % this.players.length].bet;
+        this.bb=this.players[this.p % this.players.length].name;
       console.log(this.players[this.p % this.players.length].name + "の番");
       console.log("ベット額:" + this.players[this.p % this.players.length].bet);
       console.log("チップ:" + this.players[this.p % this.players.length].chip);
@@ -834,13 +806,14 @@ switch( this.players.length ) {
       while (this.players[this.p % this.players.length].isplay != 0) {
         this.p++;
       }
+      this.showSbbb();
       this.turn = this.players[this.p % this.players.length].name;
       console.log(this.players[this.p % this.players.length].name + "の番");
       this.stopTimer();
-      this.startTimer(); //commentout
+      this.startTimer();//commentout
     },
     show() {
-      this.wc++;
+      this.wc ++;
       this.startTimerWinner();
       this.$modal.show("winner-modal");
     },
@@ -921,73 +894,107 @@ switch( this.players.length ) {
         that.fetchWinner();
       }, 3000);
     },
-    winner2() {
-      this.win = this.selectWinnerValue;
+    winner2(){
+      this.win =this.selectWinnerValue;
     },
-    async showAction() {
-      let that = this;
+    showAction() {
+      let that =this;
+      let pika =Number(this.p % this.players.length);
       this.$modal.show("action-modal");
-      await setTimeout(function() {
+      setTimeout(function() {
         that.$modal.hide("action-modal");
-      }, 2000);
+      }, 4000);
     },
     showErr() {
-      let that = this;
+      let that =this;
       this.$modal.show("err-modal");
       setTimeout(function() {
         that.$modal.hide("err-modal");
-      }, 2000);
-    }
+      }, 3000);
+    },
+    showWin() {
+      let that =this;
+      this.$modal.show("win-modal");
+      setTimeout(function() {
+        that.$modal.hide("win-modal");
+        this.winComment = "";
+      }, 3000);
+    },
+    showBr() {
+      let that =this;
+      setTimeout(function(){
+        that.$modal.show("br-modal");
+      },2000);
+      setTimeout(function() {
+        that.$modal.hide("br-modal");
+      }, 5000);
+    },
+    showSbbb() {
+      let that =this;
+      console.log("sbbb-modal");
+      setTimeout(function() {
+        that.$modal.show("sbbb-modal");
+      }, 10);
+      setTimeout(function() {
+        that.$modal.hide("sbbb-modal");
+      }, 4000);
+      setTimeout(function() {
+        that.$modal.show("sbbb-modal2");
+      }, 4000);
+      setTimeout(function() {
+        that.$modal.hide("sbbb-modal2");
+      }, 8000);
+    },
   }
 };
 </script>
 
 
 <style scoped>
-/* 奥瀬が教えてくれたんご */
 @import url(https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css);
-.gradation {
-  margin-top: -60px;
-  padding-top: 7%;
-  width: 100%;
-  height: 135%;
-  font-family: "Exo", sans-serif;
-  color: black;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+.gradation{
+    margin-top: -60px;
+    padding-top: 7%;
+    width: 100%;
+    height: 135%;
+    font-family: "Exo", sans-serif;
+    color: black;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+
 }
+
 
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
-.pod {
+.pod{
   vertical-align: middle;
 }
-.bet {
+.bet{
   vertical-align: middle;
 }
-.flex_box1 {
+.flex_box{
   display: flex;
-  justify-content: space-around;
-}
-
-.text_content {
-  width:auto;
-  padding: 0%;
 
 }
-.table_content {
+
+.text_content{
+  /* margin-left:10px; */
+ padding-left:5%;
+}
+.table_content{
   /* margin-right: 10px; */
-  padding-right: 20%;
+  padding-right:20%;
   width: 200%;
 }
 
@@ -1008,26 +1015,25 @@ table td {
   width: 25%;
   padding: 15px 0;
 }
-.active {
-  background-color: red;
+.active{
+  background-color: #d4f0fd;
 }
-.isfold {
-  background-color: blueviolet;
+.isfold{
+  background-color: lightgray;
 }
-
-.preflop {
-  background-color: rgb(223, 134, 226);
+.bettingRound{
+  background-color: #d4f0fd;
 }
-.flop {
-  background-color: rgb(223, 134, 226);
+.notbr{
+  color: lightgray;
 }
-.turnCL {
-  background-color: rgb(223, 134, 226);
+.pot{
+  margin-top:100px;
+  margin-right: 50px;
 }
-.river {
-  background-color: rgb(223, 134, 226);
+.turn{
+  color:black
 }
-
 /* テーブル画像について */
 .flex_box2 {
   display: flex;
@@ -1042,74 +1048,89 @@ table td {
   top: 32%;
   left: 38%;
   padding: 10px;
-  background-color: #d4f0fd
+  color:white;
+  background-color: rgba(255,255,255,0)
 }
 .table-text-player{
-  background-color: #d4f0fd
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player0{
   position: absolute;
   top: 76%;
   left: 27%;
-  background-color: #d4f0fd
+  background-color:rgba(0,0,0,0.6);
+  border:solid;
 }
 .table-player1{
   position: absolute;
   top: 76%;
   left: 58%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player2{
   position: absolute;
   top: 3%;
   left: 27%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player3{
   position: absolute;
   top: 3%;
   left: 58%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player4{
   position: absolute;
   top: 60%;
   left: 7%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player5{
   position: absolute;
   top: 22%;
   left: 82%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player6{
   position: absolute;
   top: 60%;
   left: 82%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player7{
   position: absolute;
   top: 22%;
   left: 7%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player8{
   position: absolute;
   top: 3%;
   left:43%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
 .table-player9{
   position: absolute;
   top: 76%;
   left:43%;
-  background-color: #d4f0fd
+  border:solid;
+  background-color:rgba(0,0,0,0.6)
 }
-
-
-
-
-
+.player6{
+ margin-top:-60px;
+}
+.player7{
+margin-top:-120px;
+}
+.player8{
+margin-top:-190px;
+}
 </style>

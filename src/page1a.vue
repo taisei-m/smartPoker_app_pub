@@ -15,7 +15,7 @@
           </div>
         </div>
         <form @submit.prevent="submit">
-          <div align="center" style="margin-top:5%;"><v-ons-button type="submit" style="margin-top: 5%; margin-bottom: 4%;"@click="submit()">ゲームスタート</v-ons-button></div>
+          <div align="center" style="margin-top:5%;"><v-ons-button type="submit" style="margin-top: 5%; margin-bottom: 4%;" @click="submit()">ゲームスタート</v-ons-button></div>
         </form>
       </v-ons-card>
     </div>

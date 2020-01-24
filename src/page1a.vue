@@ -229,6 +229,8 @@ table td {
 }
 .imgtable-content {
   position: relative;
+  text-align: center;
+  white-space: nowrap;
 }
 .table-text-center{
   position: absolute;

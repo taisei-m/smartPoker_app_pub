@@ -1,19 +1,44 @@
 <template>
   <v-ons-page>
     <div class="gradation">
-      <h1 align="center" style="color:white;margin-top:-20px">SmartPoker</h1>
+      <h1 align="center" style="color:white; padding-top: 60px; padding-bottom: 20px">SmartPoker</h1>
       <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#eeeeee"><path d="M143.19336,21.43001c-0.26705,0.00844 -0.53341,0.03181 -0.79785,0.06999h-34.89551c-2.58456,-0.03655 -4.98858,1.32136 -6.29153,3.55376c-1.30295,2.2324 -1.30295,4.99342 0,7.22582c1.30295,2.2324 3.70697,3.59031 6.29153,3.55376h18.53256l-66.59961,66.59961c-1.8722,1.79752 -2.62637,4.46674 -1.97164,6.97823c0.65473,2.51149 2.61604,4.4728 5.12753,5.12753c2.51149,0.65473 5.18071,-0.09944 6.97823,-1.97165l66.59961,-66.59961v18.53255c-0.03655,2.58456 1.32136,4.98858 3.55376,6.29153c2.2324,1.30295 4.99342,1.30295 7.22582,0c2.2324,-1.30295 3.59031,-3.70697 3.55376,-6.29153v-34.9235c0.28889,-2.08845 -0.35639,-4.19816 -1.76411,-5.76769c-1.40772,-1.56953 -3.43507,-2.43964 -5.54253,-2.3788zM35.83333,21.5c-7.83362,0 -14.33333,6.49972 -14.33333,14.33333v100.33333c0,7.83362 6.49972,14.33333 14.33333,14.33333h100.33333c7.83362,0 14.33333,-6.49972 14.33333,-14.33333v-43c0.03655,-2.58456 -1.32136,-4.98858 -3.55376,-6.29153c-2.2324,-1.30295 -4.99342,-1.30295 -7.22582,0c-2.2324,1.30295 -3.59031,3.70697 -3.55376,6.29153v43h-100.33333v-100.33333h43c2.58456,0.03655 4.98858,-1.32136 6.29153,-3.55376c1.30295,-2.2324 1.30295,-4.99342 0,-7.22582c-1.30295,-2.2324 -3.70697,-3.59031 -6.29153,-3.55376z"></path></g></g>
       <v-ons-card style="margin-top:-20px">
+        <div class ="flex_box_L">
+        　<div class="flex_box_round">
+        <!-- ラウンド　1/8 -->
         <h1 align="center" >ROUND : <b>{{round}}/{{maxRound}}</b></h1>
-        <table border="2" align="center" style="margin-right:270px;margin-bottom:50px">
-          <tr ><th :class="{bettingRound:br ==0,notbr:br !=0}">{{bettingRound[0]}}</th><th :class="{bettingRound:br ==1,notbr:br !=1}">{{bettingRound[1]}}</th>
-          <th :class="{bettingRound:br ==2,notbr:br !=2}">{{bettingRound[2]}}</th><th :class="{bettingRound:br ==3,notbr:br !=3}">{{bettingRound[3]}}</th></tr>
-        </table>
-        <div class="flex_box">
-          <div>
-          <div>
-            <div class="table_content" :class="{player6: player.length==6,player7: player.length==7,player8: player.length==8}">
-              <table border="2">
+        　</div>
+
+        <!-- <div class="flex_box2"> -->
+        <!-- 順番がわかるテーブル -->
+          <div class="imgtable-content"  style="margin-top:30px; margin-bottom: 40px">
+            <img src="./images/pokertable2.png" style="width: 100%">
+            <div class="table-text-center">
+              <h2><img src="./images/1575385499810.png" width="40px" height="30px" class="pod"> POT : {{pot}}</h2>
+              <h2><img src="./images/1575385254734.png" width="40px" height="30px" class="bet"> BET : {{bet}}</h2>
+            </div>
+            <div v-for="(item,i) of players" v-bind:key="item.name">
+              <div style="background-color: rgba(0,0,0,0.7);color:white;padding:8px;  font-size: 50%;" v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
+                <div v-if="players[i].name === turn" style="background-color: rgba(0,0,0,0.6);color:white">☆Your Turn☆</div>
+                <span :class="{turn:players[i].name === turn}">PLAYER{{i+1}}<br><b>{{ item.name }}</b><br>Chip：{{ item.chip }}</span>
+              </div>
+            </div>
+          </div>
+        <!-- </div> -->
+
+        <!-- プリフロップ、フロップ -->
+        <div class="table_bar">
+          <table border="2" align="center" style="" class="bar">
+            <tr><th :class="{bettingRound:br ==0,notbr:br !=0}">{{bettingRound[0]}}</th><th :class="{bettingRound:br ==1,notbr:br !=1}">{{bettingRound[1]}}</th>
+            <th :class="{bettingRound:br ==2,notbr:br !=2}">{{bettingRound[2]}}</th><th :class="{bettingRound:br ==3,notbr:br !=3}">{{bettingRound[3]}}</th></tr>
+          </table>
+        </div>
+
+
+
+            <div class="table_content">
+              <table border="2" class="bar">
               <tr>　　<th>Role</th><th>　Bet　</th><th>　Player　</th><th>　Chip　</th></tr>
               <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{active: item.name==turn,isfold: item.isplay==1}">
                 <td><span v-show="dealer == item.name">ディーラー</span>
@@ -23,24 +48,9 @@
               </tr>
               </table>
             </div>
-          </div>
-        </div>
-        <div class="flex_box2">
-          <div class="imgtable-content"  style="margin-top:-50px;margin-left:100px">
-            <img src="./images/pokertable2.png">
-            <div class="table-text-center">
-              <h1><img src="./images/1575385499810.png" width="40px" height="30px" class="pod"> POT : {{pot}}</h1>
-              <h1><img src="./images/1575385254734.png" width="40px" height="30px" class="bet"> BET : {{bet}}</h1>
-            </div>
-            <div v-for="(item,i) of players" v-bind:key="item.name">
-              <div style="background-color: rgba(0,0,0,0.7);color:white;padding:8px" v-bind:class="tableplayer[i]" v-bind:style="[players[i].name === turn? tableLightup:''] " v-bind:key="item.name">
-                <div v-if="players[i].name === turn" style="background-color: rgba(0,0,0,0.6);color:white">☆Your Turn☆</div>
-                <span :class="{turn:players[i].name === turn}">PLAYER{{i+1}}<br><b>{{ item.name }}</b><br>Chip：{{ item.chip }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
+
+
+
 
         <modal name="sbbb-modal" width="50%"  height="40%" >
           <div align="center" style="line-height:100px;">
@@ -92,6 +102,7 @@
             <h1>{{winComment}}</h1>
           </div>
         </modal>
+      </div>
       </v-ons-card>
     </div>
   </v-ons-page>
@@ -977,15 +988,32 @@ export default {
         background-position: 0% 50%;
     }
 }
-.pod{
+h2 {
   vertical-align: middle;
+  font-size: 80%;
 }
-.bet{
-  vertical-align: middle;
-}
-.flex_box{
-  display: flex;
 
+h2 .pod {
+  vertical-align: middle;
+  font-size: 80%;
+}
+h2 .bet{
+  vertical-align: middle;
+  font-size: 50%;
+}
+/* .flex_box{
+  display: flex;
+} */
+.flex_box_L{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex_box_round{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .text_content{
@@ -994,15 +1022,26 @@ export default {
 }
 .table_content{
   /* margin-right: 10px; */
-  padding-right:20%;
-  width: 200%;
+  /* padding-right:20%; */
+  /* width: 200%; */
+  /* margin: 0 auto;
+  white-space: nowrap;
+  font-size: 90%; */
+}
+.bar{
+  white-space: nowrap;
+  font-size: 100%;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 40px;
+
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  table-layout: auto;
 }
+
 
 table tr {
   border-bottom: solid 1px #eee;
@@ -1012,8 +1051,8 @@ table tr {
 table th,
 table td {
   text-align: center;
-  width: 25%;
-  padding: 15px 0;
+  padding: 2% 3%;
+  font-size: 80%;
 }
 .active{
   background-color: #d4f0fd;
@@ -1023,9 +1062,16 @@ table td {
 }
 .bettingRound{
   background-color: #d4f0fd;
+  text-align: center;
+  padding: 2% 2%;
+  font-size: 60%;
+
 }
 .notbr{
   color: lightgray;
+  text-align: center;
+  padding: 2% 2%;
+  font-size: 60%;
 }
 .pot{
   margin-top:100px;
@@ -1035,57 +1081,61 @@ table td {
   color:black
 }
 /* テーブル画像について */
-.flex_box2 {
+/* .flex_box2 {
   display: flex;
   flex-direction: column;
-  padding-top: 36px;
-}
+} */
 .imgtable-content {
   position: relative;
+  text-align: center;
+  white-space: nowrap;
 }
 .table-text-center{
   position: absolute;
-  top: 32%;
-  left: 38%;
-  padding: 10px;
+  top: 31%;
+  left: 36%;
+  /* padding: 10px; */
   color:white;
-  background-color: rgba(255,255,255,0)
+  background-color: rgba(255,255,255,0);
 }
 .table-text-player{
   background-color:rgba(0,0,0,0.6)
 }
+.table_text{
+  font-size: 60%;
+}
 .table-player0{
   position: absolute;
-  top: 76%;
-  left: 27%;
+  top: 80%;
+  left: 28%;
   background-color:rgba(0,0,0,0.6);
   border:solid;
 }
 .table-player1{
   position: absolute;
-  top: 76%;
-  left: 58%;
+  top: 80%;
+  left: 57%;
   border:solid;
   background-color:rgba(0,0,0,0.6)
 }
 .table-player2{
   position: absolute;
-  top: 3%;
-  left: 27%;
+  top: -5%;
+  left: 28%;
   border:solid;
   background-color:rgba(0,0,0,0.6)
 }
 .table-player3{
   position: absolute;
-  top: 3%;
-  left: 58%;
+  top: -5%;
+  left: 57%;
   border:solid;
   background-color:rgba(0,0,0,0.6)
 }
 .table-player4{
   position: absolute;
   top: 60%;
-  left: 7%;
+  left: 3%;
   border:solid;
   background-color:rgba(0,0,0,0.6)
 }
@@ -1106,7 +1156,7 @@ table td {
 .table-player7{
   position: absolute;
   top: 22%;
-  left: 7%;
+  left: 3%;
   border:solid;
   background-color:rgba(0,0,0,0.6)
 }

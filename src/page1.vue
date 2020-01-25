@@ -14,11 +14,11 @@
       <div  style="float: center;width: 120px">
       <label><input  type="checkbox" :checked="isAllSelected" @click="selectAll">ALL</label>
       <div v-for="(name, i) in names" :key="i">
-        <label><input :id="'name' + i" type="checkbox" :value="name" v-model="player"  style="float: left"><b>{{name}}</b></label{selected:>
-        </div>
+        <label><input :id="'name' + i" type="checkbox" :value="name" v-model="player"  style="float: left"><b>{{name}}</b></label>
+      </div>
       </div><br>
       <div><label for="maxRound">ラウンド</label><br>
-      <input  type="number" v-model="maxFRound"></div><br>
+      <input  type="number" v-model="maxRound"></div><br>
       <div><label for="chip">チップ</label><br>
       <input type="number" v-model="chip"></div><br>
       <div><label for="minbet">最低ベット</label><br>
@@ -92,7 +92,7 @@ export default {
     }
     this.selectAll();
     this.groupID = data.record.groupId.value;
-    this.maxRound = this.player.length;
+    // this.maxRound = this.player.length;
   })
   .catch((err) => {
     console.error( err );

@@ -90,7 +90,7 @@
             <h2>ショーダウン</h2>
             ラウンド{{round}}終了です。
             勝利プレイヤーを<b>「プレイヤー'番号'」</b>で言ってください。
-            <table border="2">
+            <table border="2" style="white-space: nowrap;">
               <tr v-for="(item,i) of players" v-bind:key="item.name" v-bind:class="{isfold: item.isplay==1}" align="center">
                 <td>PLAYER{{i+1}}</td><td><b>{{ item.name }}</b></td>
               </tr>
@@ -967,7 +967,7 @@ export default {
     margin-top: -60px;
     padding-top: 7%;
     width: 100%;
-    height: 135%;
+    height: 200%;
     font-family: "Exo", sans-serif;
     color: black;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -1034,8 +1034,9 @@ h2 .bet{
   width: 100%;
   table-layout: fixed;
   margin-bottom: 40px;
-
 }
+
+
 
 table {
   border-collapse: collapse;

@@ -1020,14 +1020,7 @@ h2 .bet{
   /* margin-left:10px; */
  padding-left:5%;
 }
-.table_content{
-  /* margin-right: 10px; */
-  /* padding-right:20%; */
-  /* width: 200%; */
-  /* margin: 0 auto;
-  white-space: nowrap;
-  font-size: 90%; */
-}
+
 .bar{
   white-space: nowrap;
   font-size: 100%;

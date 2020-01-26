@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.eajy.smartpoker" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Smart Poker</name>
     <description>
       Vue.js + Onsen UI + Cordova sample app
@@ -17,7 +17,13 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <allow-intent href="market:*" />
+        <!-- <allow-intent href="market:*" /> -->
+        <icon density="ldpi" src="res/icon/android/android/drawable-hdpi/icon_googleplay.png" />
+        <icon density="mdpi" src="res/icon/android/android/drawable-ldpi/icon_googleplay.png" />
+        <icon density="hdpi" src="res/icon/android/android/drawable-mdpi/icon_googleplay.png" />
+        <icon density="xhdpi" src="res/icon/android/android/drawable-tvdpi/icon_googleplay.png" />
+        <icon density="xxhdpi" src="res/icon/android/android/drawable-xhdpi/icon_googleplay.png" />
+        <icon density="xxxhdpi" src="res/icon/android/android/drawable-xxhdpi/icon_googleplay.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

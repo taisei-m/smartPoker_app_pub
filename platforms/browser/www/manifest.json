@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Smart Poker",
+  "short_name": "Smart Poker",
+  "version": "com.eajy.smartpoker",
+  "description": "Vue.js + Onsen UI + Cordova sample app",
+  "author": "Vue.js + Onsen UI + Cordova teams",
+  "icons": [],
+  "start_url": "start-up.html"
+}

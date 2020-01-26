@@ -1,0 +1,23 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.helloworld"
+    },
+    "cordova-plugin-crypt-file": {
+      "PACKAGE_NAME": "com.eajy.smartpoker"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.3.4",
+    "cordova-plugin-crypt-file": "1.3.3"
+  }
+}
